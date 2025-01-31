@@ -14,7 +14,7 @@ public class QuickSort{
     int temp2 = 0;
     for(int i = 0; i < arr1.legnth; i++){
         if(arr1[o] < pivot){
-          b++
+          b++;
         }
       }
     }
