@@ -1,26 +1,28 @@
 import java.io.*;
 import java.util.*;
 public class QuickSort{
-  public static void partition(int[] arr1){
-    int length = arr1.length;
-    int pivot = quick(arr1)
-    int pivot1 = arr[quick(arr1)];
-    if(length <= 1){
-      return;
-    } //base case
-    int o = 0
-    int b = 0;
-    int temp1 = 0;
-    int temp2 = 0;
-    for(int i = 0; i < arr1.legnth; i++){
-        if(arr1[o] < pivot){
-          b++;
-        }
-      }
+  public static void quicksort(int[] arr, int low, int high){
+    if(low< high){
+      int pivot = partition(arr, low, high);
+      quicksort(arr, low, pivot - 1);
+      quicksort(arr, pivot + 1, high);
     }
-  public static int quick(int[] arr){
-   int pivot = arr.length - 1;
-   return pivot;
+    }
+  public static int partition(int[] arr, int low, int high){
+   int pivot = arr[high];
+   int j = (low-1);
+   for(int i = low; i<high; i++){
+    if(arr[i] <= pivot){
+      j++;
+      int temp = arr[j];
+      arr[j] = arr[i];
+      arr[i] = temp;
+    }
+   }
+   int temp = arr[j+1];
+  arr[j+1] = arr[high];
+  arr[high] = temp;
+  return (j+1);
   }
   public static void main (String args[]) throws IOException{
     Scanner in = new Scanner(System.in);
@@ -34,6 +36,7 @@ public class QuickSort{
       arr[j] = fin.nextInt();
       j++;
     }
+    quicksort(arr, 0, lines - 1);
     for (int i = 0; i < arr.length; i++){
       if(i != arr.length -1){
         System.out.print(arr[i] + " , ");
@@ -42,6 +45,5 @@ public class QuickSort{
         System.out.println(arr[i]);
     }
   }
-    System.out.println(arr[quick(arr)]);//pivot
   }
   }
